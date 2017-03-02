@@ -29,45 +29,23 @@
         private void InitializeComponent()
         {
             this.BtnCreate = new System.Windows.Forms.Button();
-            this.PageNumberSelector = new System.Windows.Forms.NumericUpDown();
             this.TxtDir = new System.Windows.Forms.TextBox();
             this.BtnDir = new System.Windows.Forms.Button();
+            this.LblDir = new System.Windows.Forms.Label();
+            this.NumPages = new System.Windows.Forms.NumericUpDown();
             this.LblPages = new System.Windows.Forms.Label();
-            this.LblPageNo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PageNumberSelector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPages)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCreate
             // 
-            this.BtnCreate.Location = new System.Drawing.Point(15, 141);
+            this.BtnCreate.Location = new System.Drawing.Point(15, 131);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(255, 23);
             this.BtnCreate.TabIndex = 0;
             this.BtnCreate.Text = "Create Cards";
             this.BtnCreate.UseVisualStyleBackColor = true;
             this.BtnCreate.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // PageNumberSelector
-            // 
-            this.PageNumberSelector.Location = new System.Drawing.Point(15, 103);
-            this.PageNumberSelector.Maximum = new decimal(new int[] {
-            28,
-            0,
-            0,
-            0});
-            this.PageNumberSelector.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.PageNumberSelector.Name = "PageNumberSelector";
-            this.PageNumberSelector.Size = new System.Drawing.Size(255, 20);
-            this.PageNumberSelector.TabIndex = 1;
-            this.PageNumberSelector.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // TxtDir
             // 
@@ -86,38 +64,50 @@
             this.BtnDir.UseVisualStyleBackColor = true;
             this.BtnDir.Click += new System.EventHandler(this.BtnDir_Click);
             // 
+            // LblDir
+            // 
+            this.LblDir.AutoSize = true;
+            this.LblDir.Location = new System.Drawing.Point(12, 19);
+            this.LblDir.Name = "LblDir";
+            this.LblDir.Size = new System.Drawing.Size(127, 13);
+            this.LblDir.TabIndex = 4;
+            this.LblDir.Text = "Select Directory of Pages";
+            // 
+            // NumPages
+            // 
+            this.NumPages.Location = new System.Drawing.Point(15, 93);
+            this.NumPages.Name = "NumPages";
+            this.NumPages.Size = new System.Drawing.Size(255, 20);
+            this.NumPages.TabIndex = 5;
+            this.NumPages.Value = new decimal(new int[] {
+            28,
+            0,
+            0,
+            0});
+            // 
             // LblPages
             // 
             this.LblPages.AutoSize = true;
-            this.LblPages.Location = new System.Drawing.Point(12, 19);
+            this.LblPages.Location = new System.Drawing.Point(12, 77);
             this.LblPages.Name = "LblPages";
-            this.LblPages.Size = new System.Drawing.Size(127, 13);
-            this.LblPages.TabIndex = 4;
-            this.LblPages.Text = "Select Directory of Pages";
-            // 
-            // LblPageNo
-            // 
-            this.LblPageNo.AutoSize = true;
-            this.LblPageNo.Location = new System.Drawing.Point(12, 87);
-            this.LblPageNo.Name = "LblPageNo";
-            this.LblPageNo.Size = new System.Drawing.Size(105, 13);
-            this.LblPageNo.TabIndex = 5;
-            this.LblPageNo.Text = "Select Page Number";
+            this.LblPages.Size = new System.Drawing.Size(144, 13);
+            this.LblPages.TabIndex = 6;
+            this.LblPages.Text = "Enter number of pages to cut";
             // 
             // FrmCAHCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 190);
-            this.Controls.Add(this.LblPageNo);
+            this.ClientSize = new System.Drawing.Size(288, 178);
             this.Controls.Add(this.LblPages);
+            this.Controls.Add(this.NumPages);
+            this.Controls.Add(this.LblDir);
             this.Controls.Add(this.BtnDir);
             this.Controls.Add(this.TxtDir);
-            this.Controls.Add(this.PageNumberSelector);
             this.Controls.Add(this.BtnCreate);
             this.Name = "FrmCAHCreator";
             this.Text = "CAH Page to Card Creator";
-            ((System.ComponentModel.ISupportInitialize)(this.PageNumberSelector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,11 +116,11 @@
         #endregion
 
         private System.Windows.Forms.Button BtnCreate;
-        private System.Windows.Forms.NumericUpDown PageNumberSelector;
         private System.Windows.Forms.TextBox TxtDir;
         private System.Windows.Forms.Button BtnDir;
+        private System.Windows.Forms.Label LblDir;
+        private System.Windows.Forms.NumericUpDown NumPages;
         private System.Windows.Forms.Label LblPages;
-        private System.Windows.Forms.Label LblPageNo;
     }
 }
 

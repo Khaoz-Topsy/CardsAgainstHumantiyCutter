@@ -19,7 +19,8 @@ namespace ImageCutter4CAH
         public FrmCAHCreator()
         {
             InitializeComponent();
-            Directory.SelectedPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            string tempDir = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            Directory.SelectedPath = tempDir + "\\data\\CAH_MainGame";
         }
 
         private void BtnDir_Click(object sender, EventArgs e)
@@ -34,29 +35,38 @@ namespace ImageCutter4CAH
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int Page = Convert.ToInt32(PageNumberSelector.Value);
+            //int Page = Convert.ToInt32(PageNumberSelector.Value);
+            NumPages.Value++;
 
-            for (int card = 1; card < 21; card++)
+            for (int Page = 1; Page < NumPages.Value; Page++)
             {
-                CropImage(Page, card);
+                for (int card = 1; card < 21; card++)
+                {
+                    CropImage(Page, card);
+                }
             }
 
+            Application.Exit();
         }
 
         public void CropImage(int PageNumber, int CardNumber)
         {
-            int PointX = 81 + (((CardNumber % 4) - 1) * 598);
-            int PointY = 158 + (((CardNumber / 4)) * 598);
+            int xAdjust = 54;
+            int yAdjust = 105;
+            int cardSize = 398;
+
+            int PointX = xAdjust + (((CardNumber % 4) - 1) * cardSize);
+            int PointY = yAdjust + (((CardNumber / 4)) * cardSize);
 
             if ((CardNumber % 4) == 0)
             {
-                PointX = 81 + (3 * 598);
-                PointY -= 598;
+                PointX = xAdjust + (3 * cardSize);
+                PointY -= cardSize;
             }
 
             try
             {
-                Rectangle cropRect = new Rectangle(PointX, PointY, 598, 598);
+                Rectangle cropRect = new Rectangle(PointX, PointY, cardSize, cardSize);
                 Bitmap src = Image.FromFile(Directory.SelectedPath + "\\CAH_MainGame-" + intTo2CharString(PageNumber) + ".png") as Bitmap;
                 Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
 
@@ -70,6 +80,7 @@ namespace ImageCutter4CAH
                 target.Save(Directory.SelectedPath + "\\C#Cards\\Card" + intTo3CharString(CardNumber + (PageNumber * 20) - 20) + ".png", ImageFormat.Png);
                 //target.Save("C:\\Users\\kurtl\\Desktop\\Card" + intTo3CharString(CardNumber) + ".png", ImageFormat.Png);
 
+                src.Dispose();
                 src = null;
                 target = null;
             }
