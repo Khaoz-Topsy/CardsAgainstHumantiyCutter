@@ -19,6 +19,7 @@ namespace ImageCutter4CAH
         public FrmCAHCreator()
         {
             InitializeComponent();
+            Directory.SelectedPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
         }
 
         private void BtnDir_Click(object sender, EventArgs e)
@@ -33,14 +34,6 @@ namespace ImageCutter4CAH
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //for(int Page=1; Page<29; Page++)
-            //{
-            //    for (int card = 1; card < 21; card++)
-            //    {
-            //        CropImage(Page, card);
-            //    }
-            //}
-
             int Page = Convert.ToInt32(PageNumberSelector.Value);
 
             for (int card = 1; card < 21; card++)
@@ -64,7 +57,7 @@ namespace ImageCutter4CAH
             try
             {
                 Rectangle cropRect = new Rectangle(PointX, PointY, 598, 598);
-                Bitmap src = Image.FromFile(Directory.SelectedPath + "\\CAH_MainGame_" + intTo2CharString(PageNumber) + ".png") as Bitmap;
+                Bitmap src = Image.FromFile(Directory.SelectedPath + "\\CAH_MainGame-" + intTo2CharString(PageNumber) + ".png") as Bitmap;
                 Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
 
                 using (Graphics g = Graphics.FromImage(target))
